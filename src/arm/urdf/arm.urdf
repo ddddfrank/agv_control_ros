@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="arm">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="2.4100810754784E-09 -1.44493238359068E-08 0.00916688701767407"
+        rpy="0 0 0" />
+      <mass
+        value="1.48135898316253" />
+      <inertia
+        ixx="0.000124542297357122"
+        ixy="9.76806810262928E-13"
+        ixz="1.70313497348212E-12"
+        iyy="0.000124542109078445"
+        iyz="-1.05555456349748E-11"
+        izz="0.000244817372701188" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="zhuantai">
+    <inertial>
+      <origin
+        xyz="-0.011999 0.055179 -8.8289E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.3267" />
+      <inertia
+        ixx="0.00027279"
+        ixy="4.8006E-06"
+        ixz="-3.1478E-12"
+        iyy="0.00029875"
+        iyz="1.6978E-11"
+        izz="0.00015578" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/zhuantai.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.82353 0.93725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/zhuantai.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="continuous">
+    <origin
+      xyz="0 0 0.00499999999999986"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="zhuantai" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="bigarm">
+    <inertial>
+      <origin
+        xyz="-0.00100337836934973 0.0780090299098532 -0.00615261150661628"
+        rpy="0 0 0" />
+      <mass
+        value="0.000245587294450206" />
+      <inertia
+        ixx="0.000557532152213457"
+        ixy="-2.8011208990669E-05"
+        ixz="2.47917280447207E-06"
+        iyy="0.000119109076882338"
+        iyz="2.90800840435598E-05"
+        izz="0.000609426584131222" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/bigarm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/bigarm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="continuous">
+    <origin
+      xyz="-0.0279693093597577 0.0656993491435481 0.00249999999948774"
+      rpy="0 1.5707963267949 0" />
+    <parent
+      link="zhuantai" />
+    <child
+      link="bigarm" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="smallarm">
+    <inertial>
+      <origin
+        xyz="0.0235285609294794 -0.0176352263920943 -0.0499678766464063"
+        rpy="0 0 0" />
+      <mass
+        value="0.000170564618114856" />
+      <inertia
+        ixx="0.000509722891714311"
+        ixy="-3.31104759721371E-06"
+        ixz="-6.12442935870747E-06"
+        iyy="0.000445892301979633"
+        iyz="-0.000164537890363107"
+        izz="0.000119131575987572" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/smallarm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/smallarm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="continuous">
+    <origin
+      xyz="-0.0239999999994174 0.174636899932102 -0.0112673502706042"
+      rpy="0 0 0" />
+    <parent
+      link="bigarm" />
+    <child
+      link="smallarm" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="claw">
+    <inertial>
+      <origin
+        xyz="-0.0396667445331423 -0.00212195225737732 0.0602292529686369"
+        rpy="0 0 0" />
+      <mass
+        value="0.00010714008449797" />
+      <inertia
+        ixx="2.62267238937695E-05"
+        ixy="-4.54171419305977E-08"
+        ixz="-2.52768917102453E-07"
+        iyy="5.10979075359834E-05"
+        iyz="7.18279379282775E-07"
+        izz="2.83714371448851E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/claw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/claw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="continuous">
+    <origin
+      xyz="-0.0160499999978932 -0.0625839738635943 -0.136320380776858"
+      rpy="3.14159265358979 0 3.14159265358979" />
+    <parent
+      link="smallarm" />
+    <child
+      link="claw" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  
+
+  
+  <gazebo>
+    <plugin name="control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
+  
+</robot>

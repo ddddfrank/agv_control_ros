@@ -1,0 +1,32 @@
+<launch>
+    <!--node pkg="wit_ros_imu" type="publish_odom_from_car.py" name="publish_odom_from_car" output="screen"/-->
+    <include file="$(find wit_ros_imu)/launch/wit_imu.launch"/>
+    <arg name="use_nodelets"    default="$(optenv USE_NODELETS false)" />
+    <arg name="nodelet_manager" default="$optenv robot_localization_NODELET_MANAGER robot_localization_nodelet_manager)" />
+
+
+    <!--  Placeholder for output topic remapping-->
+        <remap from="odometry/filtered" to="/odom"/>
+
+
+
+    <node unless="$(arg use_nodelets)"
+            pkg="robot_localization"
+            name="ekf_se"
+            type="ekf_localization_node"
+            clear_params="true"
+            output="screen"
+        >
+        <rosparam command="load" file="$(find wit_ros_imu)/config/ekf_template.yaml" />
+    </node>
+
+    <node if="$(arg use_nodelets)"
+        pkg="nodelet"
+        type="nodelet"
+        name="ekf_se"
+        output="screen"
+        args="load RobotLocalization/EkfNodelet $(arg nodelet_manager)"
+    >
+        <rosparam command="load" file="$(find wit_ros_imu)/config/ekf_template.yaml" />
+    </node>
+</launch>

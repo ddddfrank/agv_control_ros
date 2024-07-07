@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="agv_control" type="cm_to_agv.py" name="cy_to_agv" output="screen"/>
+	<node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen">
+    	<param name="speed" value="0.08" />
+    	<param name="turn" value="0.1" />
+  	</node>
+</launch>

@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="agv_control" type="cm_to_agv.py" name="cm_to_agv" output= "screen"/>
+	<node name="strero_camera" pkg="agv_control" type="strero_camera.py" output="screen"/>
+</launch>

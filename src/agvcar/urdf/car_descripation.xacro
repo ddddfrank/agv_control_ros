@@ -1,0 +1,27 @@
+<!-- 根标签，必须声明 xmlns:xacro -->
+<robot name="ttza_descripation" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!--包含机器人的xacro文件-->
+	<xacro:include filename="agvcar.urdf" />
+<!--运动控制-->
+	<xacro:include filename="gazebo/move.xacro" />
+<!--雷达配置文件-->
+	<xacro:include filename="gazebo/laser.xacro" />
+<!--深度相机配置文件-->
+	<xacro:include filename="gazebo/kinect.xacro" />
+<!--相机配置文件-->
+	<xacro:include filename="gazebo/camera.xacro" />
+<!-- rqt_plot显示gazebo——pose -->
+<gazebo>
+    <plugin name="ground_truth_odometry" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <bodyName>base_link</bodyName>
+      <topicName>base_pose_ground_truth</topicName>
+      <gaussianNoise>0.01</gaussianNoise>
+      <frameName>world</frameName>
+      <!-- initialize odometry for fake localization-->
+      <xyzOffsets>0 0 0</xyzOffsets>
+      <rpyOffsets>0 0 0</rpyOffsets>
+    </plugin>
+</gazebo>
+</robot>

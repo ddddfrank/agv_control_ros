@@ -1,0 +1,14 @@
+# 通用参数
+obstacle_range: 3.0
+raytrace_range: 3.5
+
+# 机器人几何参数
+# 如果机器人是圆形，使用 robot_radius
+# robot_radius: 0.12 # 圆形
+# 如果机器人是其他形状，使用 footprint
+footprint: [[-0.2, -0.2], [-0.2, 0.2], [0.2, 0.2], [0.2, -0.2]] # 其他形状
+
+# 导航包所需要的传感器
+observation_sources: scan
+scan: {sensor_frame: ladar, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+

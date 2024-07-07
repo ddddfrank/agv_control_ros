@@ -1,0 +1,34 @@
+<!--launch>
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="true">
+        <rosparam file="$(find agvcar)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find agvcar)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find agvcar)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find agvcar)/param/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find agvcar)/param/base_local_planner_params.yaml" command="load" />
+        <param name="base_global_planner" value="navfn/NavfnROS" />
+        <param name="move_base/controller_frequency" value="8.0" /> 
+    </node>
+
+</launch-->
+<launch>
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="true">
+        <rosparam file="$(find agvcar)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find agvcar)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find agvcar)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find agvcar)/param/global_costmap_params.yaml" command="load" />
+        
+        <!-- 加载 TEB Local Planner 的参数 -->
+        <rosparam file="$(find agvcar)/param/teb_local_planner_params.yaml" command="load" />
+        
+        <!-- 设置 TEB Local Planner 作为本地规划器 -->
+        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+        
+        <param name="base_global_planner" value="navfn/NavfnROS" />
+        <param name="move_base/controller_frequency" value="8.0" />
+        
+    </node>
+
+</launch>
+

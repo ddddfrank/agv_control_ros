@@ -1,0 +1,23 @@
+<launch>
+	<!--添加点云坐标系到kinect连杆坐标系的坐标变换-->
+	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0.5 0 0.5 -1.57 0 -1.57 /camera /camera_depth" />
+	<!--参数服务器中载入urdf-->
+	<param name="robot_description" command="$(find xacro)/xacro $(find agvcar)/urdf/car_descripation.xacro" />
+	<!--启动gazebo仿真环境-->
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(find agvcar)/config/wall.world" />
+	</include>
+	<!--在Gazebo中添加机器人模型-->
+	<node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -model ttza -param robot_description"/>
+	<!--启动rviz可视化工具-->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find agvcar)/config/agv.rviz"/>
+	<!--关节状态发布节点-->
+	<node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui" />
+	<!--机器人状态发布节点-->
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+		<!--键盘控制节点-->
+	<node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen">
+    	<param name="speed" value="0.2" />
+    	<param name="turn" value="0.3" />
+  	</node>
+</launch>

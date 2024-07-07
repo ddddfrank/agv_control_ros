@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="agvcar">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="13.095" />
+      <inertia
+        ixx="0.048597"
+        ixy="1.1568E-09"
+        ixz="1.5512E-06"
+        iyy="0.097167"
+        iyz="-1.5235E-11"
+        izz="0.13211" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="zql">
+    <inertial>
+      <origin
+        xyz="-1.4012E-05 0.0093941 -3.3635E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.065021" />
+      <inertia
+        ixx="1.3726E-05"
+        ixy="-1.2301E-09"
+        ixz="2.7342E-08"
+        iyy="2.4442E-05"
+        iyz="5.1251E-10"
+        izz="1.378E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/zql.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/zql.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="zq"
+    type="continuous">
+    <origin
+      xyz="-0.023 -0.0358 -0.13754"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="zql" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="yql">
+    <inertial>
+      <origin
+        xyz="2.3334E-06 -0.009395 -2.5007E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.51783" />
+      <inertia
+        ixx="0.00010923"
+        ixy="7.9114E-08"
+        ixz="2.9698E-07"
+        iyy="0.00019407"
+        iyz="7.3815E-08"
+        izz="0.00010918" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/yql.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/yql.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yq"
+    type="continuous">
+    <origin
+      xyz="-0.023 -0.0358 0.13751"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="yql" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="zhl">
+    <inertial>
+      <origin
+        xyz="0.26799 0.0093655 -3.3635E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.065021" />
+      <inertia
+        ixx="1.3726E-05"
+        ixy="-1.2301E-09"
+        ixz="2.7342E-08"
+        iyy="2.4442E-05"
+        iyz="5.1251E-10"
+        izz="1.378E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/zhl.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/zhl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="zh"
+    type="continuous">
+    <origin
+      xyz="-0.291 -0.0358 -0.13751"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="zhl" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="yhl">
+    <inertial>
+      <origin
+        xyz="0.268 -0.0094236 -2.5007E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.51783" />
+      <inertia
+        ixx="0.00010923"
+        ixy="7.9114E-08"
+        ixz="2.9698E-07"
+        iyy="0.00019407"
+        iyz="7.3815E-08"
+        izz="0.00010918" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/yhl.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/yhl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yh"
+    type="continuous">
+    <origin
+      xyz="-0.291 -0.0358 0.13754"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="yhl" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="ladar">
+    <inertial>
+      <origin
+        xyz="1.0044E-11 -5.0942E-12 -0.0002267"
+        rpy="0 0 0" />
+      <mass
+        value="0.1808" />
+      <inertia
+        ixx="8.8611E-05"
+        ixy="1.499E-14"
+        ixz="3.755E-14"
+        iyy="8.8611E-05"
+        iyz="-1.3526E-14"
+        izz="0.00011661" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/ladar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.22353 0.22353 0.22353 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/ladar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ladar"
+    type="fixed">
+    <origin
+      xyz="-0.01553 -0.18247 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="ladar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera">
+    <inertial>
+      <origin
+        xyz="0.011444 0.001705 -0.00013611"
+        rpy="0 0 0" />
+      <mass
+        value="0.10791" />
+      <inertia
+        ixx="7.1255E-05"
+        ixy="-1.7848E-08"
+        ixz="-4.9298E-08"
+        iyy="7.71E-06"
+        iyz="-2.4846E-10"
+        izz="7.0257E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agvcar/meshes2/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cameraa"
+    type="fixed">
+    <origin
+      xyz="-0.39662 -0.1625 -0.0017162"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

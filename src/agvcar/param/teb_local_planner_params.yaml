@@ -1,0 +1,52 @@
+TebLocalPlannerROS:
+  # Robot Configuration Parameters
+  max_vel_x: 1.0 # X 方向最大速度
+  min_vel_x: 0.0 # X 方向最小速度，通常设置为正值，因为后退通常不被期望
+
+  max_vel_y: 1.0 # Y 方向最大速度，对于全向机器人
+  min_vel_y: -1.1 # Y 方向最小速度，对于全向机器人
+
+  max_vel_theta: 0.5 # 最大角速度
+  acc_lim_x: 0.3 # X 加速限制
+  acc_lim_y: 0.3 # Y 加速限制
+  acc_lim_theta: 0.5 # 角加速限制
+
+  # Goal Tolerance Parameters
+  xy_goal_tolerance: 0.15 # 到达目标的XY轴公差
+  yaw_goal_tolerance: 0.1 # 到达目标的角度公差
+  free_goal_vel: false # 到达目标时是否允许保持速度
+
+  # Trajectory
+  dt_ref: 0.3 # 参考时间间隔
+  dt_hysteresis: 0.1 # 时间滞后
+  global_plan_overwrite_orientation: true # 是否重写全局规划的方向
+  allow_init_with_backwards_motion: false # 是否允许后退运动初始化
+
+  # Obstacle Avoidance
+  min_obstacle_dist: 0.5 # 避障距离
+  include_costmap_obstacles: true # 是否包含costmap的障碍物
+  costmap_obstacles_behind_robot_dist: 1.0 # 机器人后方考虑障碍物的距离
+  obstacle_poses_affected: 30 # 考虑障碍物的数量
+
+  # Optimization
+  no_inner_iterations: 5 # 内部优化迭代次数
+  no_outer_iterations: 4 # 外部优化迭代次数
+  optimization_activate: true # 是否激活优化
+  optimization_verbose: false # 是否输出优化详细信息
+  penalty_epsilon: 0.1 # 优化的惩罚项
+  weight_max_vel_x: 3 # X方向速度的权重
+  weight_max_vel_y: 3 # Y方向速度的权重
+  weight_max_vel_theta: 1 # 角速度的权重
+  weight_acc_lim_x: 1 # X加速度的权重
+  weight_acc_lim_y: 1 # Y加速度的权重
+  weight_acc_lim_theta: 1 # 角加速度的权重
+  weight_kinematics_nh: 1000 # 非全向运动学的权重
+  weight_kinematics_forward_drive: 1000 # 前进驱动的权重
+  weight_kinematics_turning_radius: 1 # 转弯半径的权重
+  weight_optimaltime: 1 # 最优时间的权重
+  weight_obstacle: 50 # 障碍物的权重
+  weight_dynamic_obstacle: 10 # 动态障碍物的权重
+
+  # Homotopy Class Planner
+  enable_homotopy_class_planning: true # 是否启用同源类规划
+  enable_multithreading: true # 是否启用多线程

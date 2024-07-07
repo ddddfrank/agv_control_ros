@@ -1,0 +1,55 @@
+<robot name="my_car" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- 旋转传动实现:用于连接控制器与关节   用的是速度接口 -->
+    <xacro:macro name="joint_trans" params="joint_name">
+        <!-- Transmission is important to link the joints and the controller -->
+        <transmission name="${joint_name}_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint_name}">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint_name}_motor">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+    </xacro:macro>
+
+    <!-- 每一个驱动轮都需要配置传动装置 -->
+    <!-- 后轮采用差速控制，使用速度接口-->
+    <xacro:joint_trans joint_name="zq" />
+    <xacro:joint_trans joint_name="yq" />
+    <xacro:joint_trans joint_name="zh" />
+    <xacro:joint_trans joint_name="yh" />
+
+    <gazebo>
+    <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+        <updateRate>100.0</updateRate>
+        <rosDebugLevel>Debug</rosDebugLevel>
+        <alwaysOn>true</alwaysOn>
+        <publishTf>1</publishTf>
+        <publishWheelJointState>true</publishWheelJointState>
+        <legacyMode>true</legacyMode>
+        <robotNamespace>/</robotNamespace>
+        <leftFrontJoint>zq</leftFrontJoint>
+        <rightFrontJoint>yq</rightFrontJoint>
+        <leftRearJoint>zh</leftRearJoint>
+        <rightRearJoint>yh</rightRearJoint>
+        <wheelSeparation>0.268</wheelSeparation>
+        <wheelDiameter>0.05</wheelDiameter>
+        <broadcastTF>1</broadcastTF>
+        <wheelTorque>40</wheelTorque>
+        <torque>30</torque>
+        <wheelAcceleration>3</wheelAcceleration>
+        <topicName>cmd_vel</topicName>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <covariance_x>0.0001</covariance_x>
+        <covariance_y>0.0001</covariance_y>
+        <covariance_yaw>0.01</covariance_yaw>
+        <robotBaseFrame>front_base</robotBaseFrame>
+
+    </plugin>
+    </gazebo>
+</robot>
